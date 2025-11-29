@@ -1,13 +1,5 @@
-
 #!/bin/bash
-
-# ========================= #
-#  Sistem Backup Otomatis   #
-# ========================= #
-
-# ========================= #
-#        INPUT USER         #
-# ========================= #
+# input user#
 echo "Masukkan folder sumber yang akan dibackup:"
 read SOURCE
 
@@ -17,15 +9,15 @@ read DEST
 echo "Masukkan lama penyimpanan backup (hari):"
 read RETENTION
 
-# === VALIDASI DIREKTORI ===
+# validasi direktori#
 
-# Cek folder sumber
+# cek folder sumber
 if [ ! -d "$SOURCE" ]; then
     echo "Error: Folder sumber tidak ditemukan!"
     exit 1
 fi
 
-# Cek folder tujuan
+# cek folder tujuan
 if [ ! -d "$DEST" ]; then
     echo "Folder tujuan tidak ditemukan. Membuat folder..."
     mkdir -p "$DEST"
@@ -42,10 +34,10 @@ echo "Folder sumber: $SOURCE"
 echo "Folder tujuan: $DEST"
 echo "Backup dimulai: $START_TIME"
 
-# === LOG START ===
+# log start
 echo "$START_TIME | Backup started: $SOURCE" >> "$LOGFILE"
 
-# === PROSES BACKUP ===
+# proses backup
 tar -czf "$BACKUP_PATH" "$SOURCE"
 STATUS=$?
 
@@ -66,7 +58,7 @@ else
     exit 1
 fi
 
-# === ROTASI BACKUP ===
+# rotasi backup
 echo "Menghapus backup lebih dari $RETENTION hari..."
 find "$DEST" -name "backup-*.tar.gz" -mtime +$RETENTION -exec rm {} \;
 echo "Rotasi backup selesai."
