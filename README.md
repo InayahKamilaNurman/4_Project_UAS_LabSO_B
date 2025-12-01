@@ -66,7 +66,7 @@ Backup lebih dari 7 hari dihapus (rotasi backup)
 ```
 4_Project_UAS_LabSO_B
 ├── Backup/
-├── Backup.log
+|   └── Backup.log 
 ├── README.md
 ├── Project.conf
 └── Src/
