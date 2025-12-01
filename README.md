@@ -86,3 +86,19 @@ Backup lebih dari 7 hari dihapus (rotasi backup)
 4. Mencatat log mulai, selesai, ukuran file, dan status (success/failed).
 5. Melakukan rotasi backup dengan menghapus file lama sesuai retention days.
 
+# Laporan Testing Script
+
+1. Test folder sumber tidak ada
+   - Input: /folder/tidak/ada
+   - Hasil: Script menampilkan error dan exit → BERHASIL
+
+2. Test folder tujuan tidak ada
+   - Script berhasil membuat folder tujuan otomatis → BERHASIL
+
+3. Test backup normal
+   - File backup-YYYYMMDD-HHMMSS.tar.gz muncul di folder backup → BERHASIL
+   - Log tercatat lengkap → BERHASIL
+
+4. Test rotasi backup
+   - Set retention=0 → backup langsung terhapus
+   - Rotasi sukses → BERHASIL
